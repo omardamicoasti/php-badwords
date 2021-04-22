@@ -17,16 +17,18 @@ e sostituire la badword passata in GET con "***" -->
     <?php
     $firstParagraph = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, quidem possimus.";
     $secondParagraph = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, quidem possimus.";
+    $cesuredWordLength = "*";
     ?>
 
     <h1>Il paragrafo è lungo <?php echo strlen($firstParagraph); ?> caratteri</h1>
     <p><?php echo $firstParagraph ?></p>
-
-    <?php $newSecondParagraph = str_replace($_GET["badword"], "***", $secondParagraph); ?>
-
-    <h1>Il paragrafo è lungo <?php echo strlen($secondParagraph); ?> caratteri</h1>
-    <p><?php echo $newSecondParagraph ?></p>
     
+
+    <?php $newSecondParagraph = str_replace($_GET["badword"], str_repeat("*", strlen($_GET["badword"])), $secondParagraph); ?>
+
+    <h1>Il paragrafo è lungo <?php echo strlen($newSecondParagraph); ?> caratteri</h1>
+    <p><?php echo $newSecondParagraph ?></p>
+
 </body>
 
 </html>
